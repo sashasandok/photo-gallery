@@ -1,9 +1,7 @@
 import axios from "axios";
+import { apiUrl } from './constants'
 
-const baseUrl = 'http://localhost:4000/api/'
-const apiUrl = (endpoint) => baseUrl + endpoint
-
-const getUserList = () => axios.get(apiUrl('users'))
+const getUserList = () => axios.get(apiUrl('user'))
 
 export default {
   getUserList,

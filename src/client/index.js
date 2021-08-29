@@ -4,6 +4,7 @@ import store from './redux/store'
 import { render } from 'react-dom'
 import App from './containers/App'
 import ErrorBoundary from './components/ErrorBoundary'
+import 'antd/dist/antd.css'
 import './main.scss'
 
 render(

@@ -45,7 +45,7 @@ module.exports = () => {
     },
     plugins: [
       new HTMLWebpackPlugin({
-        template: './public/index.html',
+        template: './src/client/index.html',
         minify: {
           collapseWhitespace: isProd,
         },
@@ -58,7 +58,7 @@ module.exports = () => {
       new CopyWebpackPlugin({
         patterns: [
           {
-            from: './public/assets',
+            from: './src/client/assets',
             to: path.resolve(process.cwd(), 'build', 'assets'),
           },
         ],

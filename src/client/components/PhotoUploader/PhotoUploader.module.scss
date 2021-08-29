@@ -1,0 +1,61 @@
+.PhotoUploaderWrapper {
+  background-color: rgb(219, 219, 219);
+  width: 100%;
+  min-height: 91vh;
+  box-sizing: border-box;
+  padding: 15px;
+
+  .Controlls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .InputsWrapper {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+
+      .Input {
+        width: 100%;
+        margin-right: 15px;
+        margin-bottom: 15px;
+      }
+
+      .Image {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .TextArea {
+        width: 100%;
+        margin-right: 15px;
+        margin-bottom: 15px;
+      }
+    }
+    
+  
+    .ButtonsWrapper {
+      .Button {
+        margin-right: 15px;
+      }
+    }
+  }
+  
+  .FileDataWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .InfoWrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .Info {
+        width: 45%;
+      }
+    }
+  }
+}
