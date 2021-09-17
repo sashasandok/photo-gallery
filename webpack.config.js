@@ -1,5 +1,6 @@
 require('dotenv').config()
 const path = require('path')
+const webpack = require('webpack')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -50,6 +51,10 @@ module.exports = () => {
           collapseWhitespace: isProd,
         },
       }),
+      new webpack.DefinePlugin({
+        'process.env.UPLOAD_PUBLIC_KEY': JSON.stringify(process.env.UPLOAD_PUBLIC_KEY),
+        'process.env.UPLOAD_SECRET_KEY': JSON.stringify(process.env.UPLOAD_SECRET_KEY),
+      }),      
       new CleanWebpackPlugin({
         dry: true,
         verbose: true,
