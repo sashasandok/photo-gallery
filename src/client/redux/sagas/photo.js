@@ -19,9 +19,9 @@ import {
 
 function* createPhoto(data) {
   try {
-    const response = yield api.uploadPhoto(data?.data);
+    const response = yield api.uploadPhoto(data?.data)
     console.log(response)
-    if(response?.data?.success) yield call(data?.history?.push, '/gallery');
+    if(response?.data?.success) yield call(data?.history?.push, '/gallery')
     yield put(createPhotoSuccess(response?.data?.item))
   } catch (error) {
     yield put(createPhotoFailure(error?.response?.data?.message))
@@ -30,7 +30,7 @@ function* createPhoto(data) {
 
 function* fetchPhotoList() {
   try {
-    const response = yield api.fetchPhotoList();
+    const response = yield api.fetchPhotoList()
     yield put(fetchPhotoSuccess(response?.data?.item))
   } catch (error) {
     yield put(fetchPhotoFailure(error?.response?.data?.message))
@@ -40,7 +40,7 @@ function* fetchPhotoList() {
 
 function* fetchPhotoById(data) {
   try {
-    const response = yield api.fetchPhotoById(data?.photoId);
+    const response = yield api.fetchPhotoById(data?.photoId)
     yield put(fetchPhotoByIdSuccess(response?.data?.item))
   } catch (error) {
     yield put(fetchPhotoByIdFailure(error?.response?.data?.message))
@@ -49,9 +49,12 @@ function* fetchPhotoById(data) {
 
 function* deletePhotoById(data) {
   try {
-    const response = yield api.deletePhotoById({ photoId: data?.data?.photoId, fileName: data?.data?.fileName });
+    const response = yield api.deletePhotoById({
+      photoId: data?.data?.photoId,
+      fileName: data?.data?.fileName,
+    })
     yield put(deletePhotoByIdSuccess(response?.data?.item))
-    yield call(data?.data?.history?.push, '/gallery');
+    yield call(data?.data?.history?.push, '/gallery')
   } catch (error) {
     yield put(deletePhotoByIdFailure(error?.response?.data?.message))
   }

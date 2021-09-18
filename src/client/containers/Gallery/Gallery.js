@@ -20,7 +20,9 @@ const Gallery = () => {
       <section className={styles.ImageList}>
         {photos?.length ? photos.map(photo => {
           return (
-            <Link key={photo._id} to={`photo/${photo._id}`}><img className={styles.Image} src={`../..${photo.src}`} alt="" /></Link>
+            <Link key={photo._id} to={`photo/${photo._id}`}>
+              <img className={styles.Image} src={`../..${photo.src}`} alt="" />
+            </Link>
           )
         }) : <NoPhotos />}
       </section>

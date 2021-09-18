@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Button, Input } from 'antd'
 import { useHistory } from 'react-router-dom'
 import { createPhotoInit } from '../../redux/actions/photo'
@@ -7,15 +7,15 @@ import styles from './PhotoUploader.module.scss'
 
 const getBase64 = file => {
   return new Promise(resolve => {
-    let baseURL = "";
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
+    let baseURL = ""
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
     reader.onload = () => {
-      baseURL = reader.result;
-      resolve(baseURL);
-    };
-  });
-};
+      baseURL = reader.result
+      resolve(baseURL)
+    }
+  })
+}
 
 const PhotoUploader = () => {
   const history = useHistory()
@@ -39,15 +39,15 @@ const PhotoUploader = () => {
   // }, [isUploaded])
 
   const onFileChange = event => {
-    let arr = event.target.files[0].type.split('')
+    const arr = event.target.files[0].type.split('')
     const index = arr.findIndex(i => i === '/')
-    let ext = arr.slice(index + 1, arr.length).join('')
+    const ext = arr.slice(index + 1, arr.length).join('')
     setFile(event.target.files[0])
     setFileName(event.target.files[0].name)
     setType(event.target.files[0].type)
     setSrc(URL.createObjectURL(event.target.files[0]))
-    setSize(event.target.files[0].size);
-    setExtension(ext);
+    setSize(event.target.files[0].size)
+    setExtension(ext)
   }
 
   const onFileUpload = () => {
@@ -69,14 +69,14 @@ const PhotoUploader = () => {
         dispatch(createPhotoInit(fileToSave, history))
       })
       .catch(err => {
-        console.log(err);
-      });
+        console.log(err)
+      })
     setFile(null)
-  };
+  }
 
   const onDescriptionChange = (evt) => {
-    const { target: { value } } = evt;
-    setDescription(value);
+    const { target: { value } } = evt
+    setDescription(value)
   }
 
   const onFileDelete = () => {
@@ -102,16 +102,16 @@ const PhotoUploader = () => {
             </p>
           </div>
         </div>
-      );
+      )
     } else {
       return (
         <div>
           <br />
           <h4>Choose photo before pressing the Upload button</h4>
         </div>
-      );
+      )
     }
-  };
+  }
 
   return (
     <div className={styles.PhotoUploaderWrapper}>

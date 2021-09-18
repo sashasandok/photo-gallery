@@ -33,7 +33,7 @@ function photoListReducer(state = initialState, action) {
         loading: true,
         showError: false,
         errorMessage: '',
-        uploaded: state.uploaded
+        uploaded: state.uploaded,
       }
     case CREATE_PHOTO_SUCCESS:
       return {

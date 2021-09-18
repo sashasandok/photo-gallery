@@ -10,7 +10,7 @@ import {
 
 function* getUserListSaga() {
   try {
-    const response = yield api.getUserList();
+    const response = yield api.getUserList()
     yield put(getUserListSuccess(response.data.items))
   } catch (error) {
     yield put(getUserListFailure(error.response.data.message))

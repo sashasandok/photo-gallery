@@ -1,5 +1,4 @@
 const photo = require('../controllers/photo')
-const path = require('path')
 
 const photoRoutes = (router) => {
   router.post('/photo', photo.uploadPhoto)

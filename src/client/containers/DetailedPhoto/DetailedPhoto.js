@@ -25,12 +25,22 @@ const DetailedPhoto = () => {
       <div className={styles.DetailedPhoto}>
         {photo?.src && <img className={styles.Image} src={`..${photo.src}`} alt="" />}
         <section className={styles.ImageInfo}>
-          <div className={styles.ImageInfoItem}><div>Size: </div> <span>{photo?.size}</span></div>
-          <div className={styles.ImageInfoItem}><div>Extension: </div> <span>{photo?.extension}</span></div>
+          <div className={styles.ImageInfoItem}>
+            <div>Size: </div> <span>{photo?.size}</span>
+          </div>
+          <div className={styles.ImageInfoItem}>
+            <div>Extension: </div> <span>{photo?.extension}</span>
+          </div>
           <div className={styles.ImageInfoItem}><div>Type: </div> <span>{photo?.type}</span></div>
-          <div className={styles.ImageInfoItem}><div>Description: </div> <span>{photo?.description}</span></div>
-          <div className={styles.ImageInfoItem}><div>Creation Date: </div> <span>{photo?.createdAt}</span></div>
-          <div className={styles.ImageInfoItem}><div>Author: </div> <span>{photo?.createdAt}</span></div>
+          <div className={styles.ImageInfoItem}>
+            <div>Description: </div> <span>{photo?.description}</span>
+          </div>
+          <div className={styles.ImageInfoItem}>
+            <div>Creation Date: </div> <span>{photo?.createdAt}</span>
+          </div>
+          <div className={styles.ImageInfoItem}>
+            <div>Author: </div> <span>{photo?.createdAt}</span>
+          </div>
         </section>
       </div>
       <Button onClick={onDeletePhoto}>Delete</Button>

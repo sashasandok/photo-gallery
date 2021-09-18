@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 import { apiUrl } from './constants'
 
 const uploadPhoto = (data) => {
@@ -27,4 +27,4 @@ export default {
   fetchPhotoList,
   fetchPhotoById,
   deletePhotoById,
-};
+}

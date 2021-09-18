@@ -7,6 +7,7 @@ module.exports = {
   'extends': [
     'plugin:react/recommended',
     'google',
+    'prettier',
   ],
   'parserOptions': {
     'ecmaFeatures': {
@@ -41,7 +42,12 @@ module.exports = {
       },
     }],
     'object-curly-spacing': 'off',
-    'max-len': 120,
+    "max-len": ["error", {"code": 100}],
+    "prefer-promise-reject-errors": ["off"],
+    "react/jsx-filename-extension": ["off"],
+    "react/prop-types": ["warn"],
+    "no-return-assign": ["off"],
+    "new-cap": ["off"],
   },
   'settings': {
     'react': {

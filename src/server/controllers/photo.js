@@ -5,7 +5,10 @@ const { saveImage, removeImage } = require('../helpers/image')
 
 const uploadPhoto = async (req, res, next) => {
   const photoName = req?.body?.fileName?.replace(/\s/g, '_')
-  await saveImage(path.join(__dirname, '../../../', 'src/client/assets', '/photos'), photoName, req?.body?.file?.base64, req?.body?.type)
+  await saveImage(
+    path.join(__dirname, '../../../', 'src/client/assets', '/photos'),
+    photoName, req?.body?.file?.base64, req?.body?.type
+  )
   if (fs.existsSync(path.join(__dirname, '../../../', 'src/client/assets', '/photos', photoName))) {
     const photo = {
       src: `/assets/photos/${photoName}`,
@@ -40,13 +43,14 @@ const deletePhotoById = async (req, res, next) => {
   const photo = await Photo.findById({ _id: id })
   removeImage(path.join(__dirname, '../../../', 'src/client/assets', '/photos'), photo?.fileName)
   
-  await Photo.findByIdAndDelete({ _id: id }).then((doc) => res.status(200).json({ success: true, item: doc }))
-  .catch((err) => res.status(400).json({ success: false, err}))
+  await Photo.findByIdAndDelete({ _id: id })
+    .then((doc) => res.status(200).json({ success: true, item: doc }))
+    .catch((err) => res.status(400).json({ success: false, err}))
 }
 
 module.exports = {
   uploadPhoto,
   fetchPhotoList,
   fetchPhotoById,
-  deletePhotoById
+  deletePhotoById,
 }

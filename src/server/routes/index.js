@@ -10,8 +10,8 @@ const routes = (app, router) => {
 
   // will redirect all the non-api routes to react frontend
   router.use((req, res) => {
-    res.sendFile(path.join(__dirname, '../../../client','build','index.html'));
-  });
+    res.sendFile(path.join(__dirname, '../../../client','build','index.html'))
+  })
 
   app.use(bodyParser.json({ limit: "50mb" }))
   app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}))

@@ -18,7 +18,9 @@ const saveImage = async (path, name, data, imgType) => {
   return await fs.writeFile(`${path}/${name}`, base64Data, 'base64', () => result = 'success')
 }
 
-const removeImage = async (path, name) => await fs.rm(`${path}/${name}`, () => console.log('File successfuly deleted'))
+const removeImage = async (path, name) => (
+  await fs.rm(`${path}/${name}`, () => console.log('File successfuly deleted'))
+)
 
 module.exports = {
   saveImage,
