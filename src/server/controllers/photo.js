@@ -5,8 +5,8 @@ const { saveImage, removeImage } = require('../helpers/image')
 
 const uploadPhoto = async (req, res, next) => {
   const photoName = req?.body?.fileName?.replace(/\s/g, '_')
-  await saveImage(path.join(__dirname, '../../../', 'src/client/assets', '/photos'), photoName, req?.body?.file?.base64, req?.body?.type)
-  if (fs.existsSync(path.join(__dirname, '../../../', 'src/client/assets', '/photos', photoName))) {
+  const saved = saveImage(path.join(__dirname, '../../../', 'src/client/assets', '/photos'), photoName, req?.body?.file?.base64, req?.body?.type)
+  if (saved) {
     const photo = {
       src: `/assets/photos/${photoName}`,
       description: req?.body?.description,
