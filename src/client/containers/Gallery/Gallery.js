@@ -26,6 +26,7 @@ const Gallery = () => {
           )
         }) : <NoPhotos />}
       </section>
+      <img src="https://ucarecdn.com/c366b9b6-6c34-4033-a4c3-17c09609aea5/unnamed.jpg" alt="iii" />
     </div>
   )
 }

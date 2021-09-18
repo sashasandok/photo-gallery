@@ -1,17 +1,12 @@
-import axios from "axios"
+import axios from "./index"
 import { apiUrl } from './constants'
 
 const uploadPhoto = (data) => {
-  return axios.post(apiUrl('photo'), data, {
-    onUploadProgress: data => {
-      console.log(data)
-      console.log(Math.round((100 * data.loaded) / data.total))
-    },
-  })
+  return axios.post(apiUrl('photo'), data)
 }
 
 const fetchPhotoList = () => {
-  return axios.get(apiUrl('photo'))
+  return axios.get('https://api.uploadcare.com/files/')
 }
 
 const fetchPhotoById = (photoId) => {

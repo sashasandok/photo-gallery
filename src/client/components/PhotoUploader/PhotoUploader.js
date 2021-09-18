@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Button, Input } from 'antd'
+import { Widget } from "@uploadcare/react-widget"
 import { useHistory } from 'react-router-dom'
 import { createPhotoInit } from '../../redux/actions/photo'
 import styles from './PhotoUploader.module.scss'
@@ -28,15 +29,15 @@ const PhotoUploader = () => {
   const [size, setSize] = useState('')
   const [extension, setExtension] = useState('')
 
-  // const isUploaded = useSelector(state => state.photo.uploaded)
+  const isUploaded = useSelector(state => state.photo.uploaded)
 
-  // useEffect(() => {
-  //   if (isUploaded) {
-  //     setTimeout(() => {
-  //       history.push('/gallery')
-  //     }, 500)
-  //   }
-  // }, [isUploaded])
+  useEffect(() => {
+    if (isUploaded) {
+      setTimeout(() => {
+        history.push('/gallery')
+      }, 500)
+    }
+  }, [isUploaded])
 
   const onFileChange = event => {
     const arr = event.target.files[0].type.split('')
@@ -113,6 +114,8 @@ const PhotoUploader = () => {
     }
   }
 
+  const secretKey = process.env.UPLOAD_SECRET_KEY
+
   return (
     <div className={styles.PhotoUploaderWrapper}>
       <h2>Photo Uploader</h2>
@@ -138,6 +141,7 @@ const PhotoUploader = () => {
             </div>
           )}
         </div>
+        <Widget publicKey={secretKey} />
         <div className={styles.ButtonsWrapper}>
           <Button
             className={styles.Button}

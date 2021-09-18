@@ -60,6 +60,7 @@ function photoListReducer(state = initialState, action) {
         showError: false,
         errorMessage: '',
         item: {},
+        uploaded: false,
       }
     case FETCH_PHOTO_SUCCESS:
       return {

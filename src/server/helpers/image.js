@@ -12,10 +12,18 @@ const baseDataReplace = (data, imgType) => {
   return base64Data
 }
 
-const saveImage = async (path, name, data, imgType) => {
+const saveImage = (path, name, data, imgType) => {
   if (!fs.existsSync(path)) fs.mkdirSync(path)
   const base64Data = baseDataReplace(data, imgType)
-  return await fs.writeFile(`${path}/${name}`, base64Data, 'base64', () => result = 'success')
+  let size = fs.stat(data, info => info);
+  console.log('size', size)
+  fs.writeFileSync(`${path}/${name}`, base64Data, 'base64', err => {
+    if(err) throw err
+    console.log("Асинхронная запись файла завершена. Содержимое файла:")
+    let data = fs.readFileSync(`${path}/${name}`)
+    console.log(data.size);
+  });
+  return 'success'
 }
 
 const removeImage = async (path, name) => (
